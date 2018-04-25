@@ -27,7 +27,7 @@ export class LoginPage {
   lastName: string;
   username: string;
   password: string;
-  customer: CustomerEntity;
+  customer: Customer;
 
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,

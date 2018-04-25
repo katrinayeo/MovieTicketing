@@ -22,7 +22,7 @@ import { TabsPage } from '../tabs/tabs';
 export class SignupPage {
   errorMessage: string;
   infoMessage: string;
-  newCustomer: CustomerEntity;
+  newCustomer: Customer;
   submitted: boolean;
 
   constructor(public navCtrl: NavController,

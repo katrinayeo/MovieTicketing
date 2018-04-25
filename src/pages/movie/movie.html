@@ -1,0 +1,158 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content *ngIf="listingToView != null">
+	<div class="item-image">
+		<button ion-button icon-only class="returnButton" clear="true" (click)="popView()">
+			<ion-icon name="arrow-back"></ion-icon>
+		</button>
+		<ion-slides pager autoplay="5000" loop="true" speed="3000" class="border-bottom">
+			<ion-slide *ngFor="let slide of slideData">
+				<img src="{{slide}}" />
+			</ion-slide>
+		</ion-slides>
+	</div>
+
+	<ion-grid>
+		<h1 ion-text color="dark">{{listingToView.listingTitle}}</h1>
+		<!-- need to change backend
+		<ion-row>
+			<ion-icon name = "clock">Posted date:</ion-icon>
+		</ion-row>
+		-->
+		<ion-row>
+			<ion-icon name="pricetag">Price:${{listingToView.costPerDay}}</ion-icon>
+		</ion-row>
+		<!-- gone?
+		<ion-row>
+			<ion-icon name = "heart">Likes:</ion-icon>
+		</ion-row>
+		-->
+		<ion-row>
+			<ion-icon name="list">Category:{{listingToView.category}}</ion-icon>
+		</ion-row>
+		<ion-row>
+			<ion-icon name="information-circle">Item Description:</ion-icon>
+			<div>{{listingToView.listingDescription}}</div>
+		</ion-row>
+	</ion-grid>
+
+	<div class="seller-info" margin-top>
+		<ion-list>
+			<ion-list-header>More about the Seller</ion-list-header>
+			<ion-item (click)="viewProfile(listingToView.customerEntity.customerId, listingToView.customerEntity.username)">
+				<ion-avatar item-left>
+					<div *ngIf="listingToView != null && listingToView.customerEntity.profileImage == './images/defaultprofilepic.png'">
+						<img src='assets/imgs/noimage.png'>
+					</div>
+					<div *ngIf="listingToView != null && listingToView.customerEntity.profileImage != './images/defaultprofilepic.png'">
+						<img src='{{listingToView.customerEntity.profileImage}}'>
+					</div>
+				</ion-avatar>
+				<div>
+					<div>
+						<span class="sellerUsername">{{listingToView.customerEntity.username}}</span>
+					</div>
+					<p class="sellerDescription">
+						In the beginning, there was a {{listingToView.customerEntity.username}}.
+					</p>
+				</div>
+			</ion-item>
+		</ion-list>
+		<!-- backend not implemented 
+			<ion-item-divider>
+			<ion-grid>
+				<ion-row>
+					<ion-col text-left>
+						<span>FeedBack</span>
+					</ion-col>
+					<ion-col text-center>
+						<ion-icon name = "happy">24</ion-icon>
+					</ion-col>
+					<ion-col text-center>
+						<ion-icon name = "outlet">12</ion-icon>
+					</ion-col>
+					<ion-col text-center>
+						<ion-icon name = "sad">100</ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			</ion-item-divider>
+		</ion-list>
+		-->
+	</div>
+
+	<div class="Feedback" margin-top>
+		<div *ngIf="listingToView.customerEntity.customerId != checkCustId && showFeedbackButton">
+			<button ion-button class="giveFeedback" (click)="giveFeedback()" block>
+				<ion-icon name="add"></ion-icon>
+				Leave feedback
+			</button>
+		</div>
+		<p>Feedback</p>
+		<ion-list *ngFor="let feedback of feedbacks">
+			<ion-item>
+				<ion-avatar item-left>
+					<div *ngIf="listingToView != null && listingToView.customerEntity.profileImage == './images/defaultprofilepic.png'">
+						<img src='assets/imgs/noimage.png'>
+					</div>
+					<div *ngIf="listingToView != null && listingToView.customerEntity.profileImage != './images/defaultprofilepic.png'">
+						<img src='{{listingToView.customerEntity.profileImage}}'>
+					</div>
+				</ion-avatar>
+				<div>
+					<div>
+						<span>{{ feedback.reviewer.username }}</span>
+						<div></div>
+					</div>
+					<div>
+						<span>Rating: {{feedback.rating }}</span>
+					</div>
+					<p>
+						{{ feedback.review }}
+					</p>
+				</div>
+			</ion-item>
+		</ion-list>
+
+	</div>
+
+	<ion-grid *ngIf="listings!= null">
+		<ion-row>
+			<ion-col *ngFor="let listing of listings" col-6 (click)="viewItem(listing.listingId)">
+				<div>
+					<div *ngIf="listing != null && listing.images[0] == './images/noimage.png'">
+						<img src='assets/imgs/noimage.png'>
+					</div>
+					<div *ngIf="listing != null && listing.images[0] != './images/noimage.png'">
+						<img src='{{listing.images[0]}}'>
+					</div>
+					<div class="name" text-left>{{listing.listingTitle}}</div>
+					<div class="name" text-left>${{listing.costPerDay}}</div>
+					<div class="name" text-left>{{listing.listingDescription}}</div>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
+
+<div *ngIf="errorMessage" class="errorText">
+	{{errorMessage}}
+</div>
+
+<ion-footer>
+	<div *ngIf="customerId != checkCustId" (click)="makeRequest()">
+		<button ion-button block icon-start>
+			<ion-icon name="heart"></ion-icon>
+			Make Request
+		</button>
+	</div>
+	<div *ngIf="customerId == checkCustId" (click)="editListing()">
+		<button ion-button block icon-start>
+			<ion-icon name="add"></ion-icon>
+			Edit listing
+		</button>
+	</div>
+</ion-footer>

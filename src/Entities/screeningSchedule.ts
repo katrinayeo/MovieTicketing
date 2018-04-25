@@ -1,5 +1,6 @@
 import { CalendarDate } from "./calendarDate";
 import { Movie } from "./movie";
+import { DateTime } from "ionic-angular";
 
 
 export class ScreeningSchedule{

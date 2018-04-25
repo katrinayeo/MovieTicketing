@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Platform } from 'ionic-angular';
 
-import { CustomerEntity } from '../../entities/customer';
+import { Customer } from '../../entities/customer';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -68,7 +68,7 @@ export class CustomerProvider {
   }
 
   //Sign up
-	signUp(newCustomer: CustomerEntity): Observable<any> {
+	signUp(newCustomer: Customer): Observable<any> {
 		console.log("CALLING SIGNUP FUNCTION");
 		let path: string = '';
 

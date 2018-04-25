@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { Feedback } from '../../Entities/Feedback';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -20,7 +19,8 @@ export class CinemaProvider {
 
   baseUrl = "/api/cinema";
 
-  constructor(public http: HttpClient) {
+  constructor(private httpClient: HttpClient,
+    public platform:Platform) {
     console.log('Hello CinemaProvider Provider');
   }
 
