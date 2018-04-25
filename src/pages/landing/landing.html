@@ -1,0 +1,38 @@
+<ion-header>
+
+	<ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl"></ion-searchbar>
+	<ion-list *ngIf="searchTerm != ''">
+		<ion-item *ngFor="let searchItem of searchItems" (click)="viewItem(searchItem.movieId)">
+			{{searchItem.movieTitle}}
+		</ion-item>
+	</ion-list>
+</ion-header>
+
+<ion-content>
+
+	<h3 text-center> Movies </h3>
+	<div *ngIf="errorMessage" class="errorText">
+		{{errorMessage}}
+	</div>
+	<ion-grid [virtualScroll]="movies" approxItemHeight="300px">
+		<ion-row>
+			<ion-col *virtualItem="let movie; let i = index" col-6 (click)="viewItem(movie.movieId)">
+				<div class="item-container">
+					<div *ngIf="movie.images[0] == './images/noimage.png'">
+						<img src="assets/imgs/noimage.png" style="width:180px; height:180px">
+					</div>
+					<div *ngIf="movie.images[0] != './images/noimage.png'">
+						<img src="{{movie.images[0]}}" style="width:180px; height:180px">
+					</div>
+					<div class="name" text-left>{{movie.movieTitle}}</div>
+					<div class="name" text-left>${{movie.genre}}</div>
+					<div class="name" text-left>{{movie.language}}</div>
+					<div class="name" text-left>{{movie.runtime}}</div>
+					<div class="name" text-left>{{movie.rating}}</div>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+</ion-content>

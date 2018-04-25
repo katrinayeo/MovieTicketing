@@ -1,0 +1,59 @@
+page-front {
+    ion-content{
+        text-align: center;
+      }
+    
+      .swiper-pagination-bullet-active{
+        background: white;
+      }
+    
+      .slider .slider-pager {
+       text-align: right;
+      }
+    
+      //****************Background styling******************************
+    
+      .slides{
+        height: 100%;
+        width: 100%;
+        -webkit-transition: background-image 0.5s ease-in-out;
+        transition: background-image 0.5s ease-in-out;
+        background-size: cover;
+        background-image: url("../assets/imgs/homebackground.jpg");
+      }
+    
+      //****************Button styling******************************
+      .content{
+        position: absolute;
+        width: 100%;
+        bottom: 22px;
+      }
+    
+      .btn{
+        width: 70%;
+        border-radius: 5px;
+        margin: 5px auto;
+        font-size: 13px;
+        transition: 0.5s;
+        height: 35px;
+        font-family: roboto;
+      }
+    
+      .btn:hover{
+        box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+      }
+    
+      .login{
+        color: white;
+        background-color: #3B5998;
+      }
+    
+      .signup{
+        background-color: rgba(252,250,248, 1);
+        color: #666666;
+      }
+    
+    }
+    
+

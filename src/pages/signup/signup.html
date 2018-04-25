@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar class="bar-positive" align-title="center" color="theme">
+    <ion-title class="title" color="primary">Sign up</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
+    <ion-list>
+      <ion-item no-lines>
+        <ion-input class="input-text" placeholder="Username" type="text" id="username" name="username" [(ngModel)]="newCustomer.username"
+          minlength="4" maxlength="32" required="true" #inusername="ngModel" clearInput></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input class="input-text" placeholder="Password" type="password" id="password" name="password" [(ngModel)]="newCustomer.password"
+          minlength="4" maxlength="32" required="true" #inpassword="ngModel" clearInput></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input class="input-text" placeholder="Email" type="text" id="email" name="email" [(ngModel)]="newCustomer.email" required="true"
+          #inemail="ngModel" clearInput></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <div class="button">
+          <button class="submit-button" type="submit">
+            Sign Up
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

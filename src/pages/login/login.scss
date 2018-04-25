@@ -1,0 +1,60 @@
+page-login {
+    .toolbar-background {
+    }
+  
+    ion-title {
+      // margin-left: 0 40%;
+      // text-align: center;
+    }
+  
+    //header
+  
+    //input
+    ion-input.input-text{
+      background-color: transparent;
+      padding: 5px;
+      color: black;
+      font-size: 14px;
+    }
+  
+    ion-input.input-text:focus{
+      border-style: solid;
+      border-width: thick;
+      border-color: black;
+      border-radius: 10px;
+    }
+  
+  //button
+    .button{
+      width: 100%;
+    }
+    .submit-button{
+      width: inherit;
+      color:white;
+      border-radius: 5px;
+      margin: 0 auto;
+      height: 35px;
+      background-color: #488aff;
+    }
+  
+    .submit-button:hover{
+      background-color: #2a56d1;
+      transition: 0.5s;
+      color: white;
+    }
+  
+    //forgot Password
+    .forgot-password{
+      width: 100%;
+    }
+  
+    .forgot-password-link{
+      margin: 0 auto;
+      width: 95%;
+      text-decoration: none;
+      font-size: 12px;
+      text-align: center;
+      display: block;
+    }
+  }
+  
